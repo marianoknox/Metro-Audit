@@ -46,14 +46,16 @@ app.use(
 
 
 //app.get('/', routes.index);
-app.get('/surveys/testCon', surveys.testCon)
-app.get('/surveys/createTable', surveys.createTable)
+app.get('/surveys/testCon', surveys.testCon);
+app.get('/surveys/createTableStations', surveys.createTableStations);
 app.get('/surveys/list', surveys.list);
 app.post('/surveys/add', surveys.save);
 app.get('/surveys/delete/:id', surveys.delete_survey);
 app.post('/surveys/edit/:id',surveys.save_edit);
 
-//app.use(app.router);
+//For login
+app.get('./login/createTableUsers', login.createTableUsers);
+app.post('./login/validate_user', login.validate_user);
 
 http.createServer(app).listen(app.get('port'), ()=>{
   console.log('Express server listening on port ' + app.get('port'));
