@@ -10,6 +10,7 @@ const http = require('http');
 const path = require('path');
 //load route
 const surveys = require('./survey/surveys'); 
+const login = require('./survey/login');
 const app = express();
 //const bodyParser = require('body-parser');
 
@@ -49,13 +50,15 @@ app.use(
 app.get('/surveys/testCon', surveys.testCon);
 app.get('/surveys/createTableStations', surveys.createTableStations);
 app.get('/surveys/list', surveys.list);
-app.post('/surveys/add', surveys.save);
-app.get('/surveys/delete/:id', surveys.delete_survey);
+app.put('/surveys/add', surveys.save);
+app.delete('/surveys/delete/:id', surveys.delete_survey);
 app.post('/surveys/edit/:id',surveys.save_edit);
 
 //For login
-app.get('./login/createTableUsers', login.createTableUsers);
-app.post('./login/validate_user', login.validate_user);
+app.get('/login/createTableUsers', login.createTableUsers);
+app.post('/login/validate_user', login.validate_user);
+app.put('/login/add_user', login.add_user);
+app.get('/login/list', login.list);
 
 http.createServer(app).listen(app.get('port'), ()=>{
   console.log('Express server listening on port ' + app.get('port'));
