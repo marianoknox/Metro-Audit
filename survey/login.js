@@ -25,15 +25,16 @@ exports.list = (req, res)=>{
 };
 
 exports.validate_user = (req, res)=>{
-    let query = 'SELECT uname, upass FROM tbUsers WHERE unmae = ? AND upass = ?'
+    let query = 'SELECT * FROM tbUsers WHERE uname = ? AND upass = ?'
     let input = JSON.parse(JSON.stringify(req.body))
 
     req.getConnection((err, connection)=>{
+        if(err) console.log("Connection Error")
         let data = {
             uname : input.uname,
             upass : input.upass
         }
-        connection.query(query, data, (err, rows)=>{ 
+        connection.query(query, [data.uname, data.upass], (err, rows)=>{ 
             if(err) throw err;
             res.send(rows);
             console.table(rows);

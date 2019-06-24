@@ -56,7 +56,7 @@ app.post('/surveys/edit/:id',surveys.save_edit);
 
 //For login
 app.get('/login/createTableUsers', login.createTableUsers);
-app.post('/login/validate_user', login.validate_user);
+app.get('/login/validate_user', login.validate_user);
 app.put('/login/add_user', login.add_user);
 app.get('/login/list', login.list);
 

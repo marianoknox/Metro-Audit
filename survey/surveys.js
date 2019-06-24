@@ -31,7 +31,6 @@ exports.list = (req, res)=>{
            });
            if (err)
                 console.log("Connection Error : ", err);
-           //console.log(query.sql);
     });
 };
   
@@ -40,10 +39,8 @@ exports.edit = (req, res)=>{
     req.getConnection((err,connection)=>{ 
         connection.query('SELECT * FROM survey WHERE id = ?',[id],(err,rows)=>
         {           
-            if(err) console.log("Error Selecting : %s ",err );   
-        //   res.render('edit_survey',{page_title:"Edit surveys - Node.js",data:rows});            
+            if(err) console.log("Error Selecting : %s ",err );             
         });      
-        //console.log(query.sql);
     }); 
 };
   
@@ -65,10 +62,8 @@ let input = JSON.parse(JSON.stringify(req.body));
         {
             if (err) console.log("Error inserting : %s ",err );
             res.send(input);
-            console.table(input);
-        //res.redirect('/surveys');           
+            console.table(input);         
         });      
-        // console.log(query.sql); get raw query
     });
 };
   
@@ -90,10 +85,8 @@ exports.save_edit = (req,res)=>{
         connection.query(query, [data, id], (err, rows)=>
         {
             if (err) console.log("Error Updating : %s ",err );
-            res.send(rows);        
-            //res.redirect('/surveys');       
+            res.send(rows);              
         });
-    
     });
 };
   
