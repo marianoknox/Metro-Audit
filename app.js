@@ -46,7 +46,7 @@ app.use(
 );
 
 
-//app.get('/', routes.index);
+app.get('/', surveys.list);
 app.get('/surveys/testCon', surveys.testCon);
 app.get('/surveys/createTableStations', surveys.createTableStations);
 app.get('/surveys/list', surveys.list);
