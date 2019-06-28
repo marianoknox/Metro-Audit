@@ -11,16 +11,19 @@ const path = require('path');
 //load route
 const surveys = require('./survey/surveys'); 
 const login = require('./survey/login');
+const index = require('./survey/index');
 const app = express();
 //const bodyParser = require('body-parser');
 
 const connection  = require('express-myconnection'); 
 const mysql = require('mysql');
 
+
 // all REST environments
 app.set('port', process.env.PORT || 4300);
 //Use this view later
-//app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 //app.use(express.logger('dev'));
 // app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded({extended:false }))
@@ -35,18 +38,24 @@ app.use(
     
     connection(mysql,{
         
-        host: 'localhost', //'localhost or IP',
-        user: 'root',
-        password : '',
+        host: 'alsahoogroupcom.ipagemysql.com', //'localhost or IP',
+        user: 'alsahoouser',
+        password : 'alsahoouser',
         //port : 3306, //port mysql
-        database:'dbaudit'
+        database:'alsahoogroup'
+
+        // host: 'localhost', //'localhost or IP',
+        // user: 'root',
+        // password : '',
+        // //port : 3306, //port mysql
+        // database:'dbaudit'
 
     },'pool') //or single
 
 );
 
 
-app.get('/', surveys.list);
+app.get('/', index.index);
 app.get('/surveys/testCon', surveys.testCon);
 app.get('/surveys/createTableStations', surveys.createTableStations);
 app.get('/surveys/list', surveys.list);

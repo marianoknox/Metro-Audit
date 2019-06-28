@@ -1,9 +1,7 @@
 exports.testCon = (req, res)=>{
     req.getConnection((err, connection)=>{
-        if(err){
-          console.log("MySQL Connection Error");
-        }
-        console.log("Connected successfully");
+        if(err) { console.log("Connection Error") 
+        } else {console.log("Connected successfully") }   
     });
 };
 
