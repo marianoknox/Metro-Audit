@@ -38,11 +38,11 @@ app.use(
     
     connection(mysql,{
         
-        host: 'alsahoogroupcom.ipagemysql.com', //'localhost or IP',
-        user: 'alsahoouser',
-        password : 'alsahoouser',
+        host: 'localhost', //'localhost or IP',
+        user: 'root',
+        password : '',
         //port : 3306, //port mysql
-        database:'alsahoogroup'
+        database:'dbaudit'
 
         // host: 'localhost', //'localhost or IP',
         // user: 'root',
