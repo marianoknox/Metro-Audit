@@ -12,7 +12,7 @@ const path = require('path');
 const surveys = require('./survey/surveys'); 
 const login = require('./survey/login');
 const index = require('./survey/index');
-const sample = require('./routes/customers')
+const customers = require('./routes/customers')
 const app = express();
 //const bodyParser = require('body-parser');
 
@@ -55,10 +55,16 @@ app.use(
 
 );
 
+//samples
+app.get('/', customers.list);
+app.get('/customers', customers.list);
+app.get('/customers/add', customers.add);
+app.post('/customers/add', customers.save);
+app.get('/customers/delete/:id', customers.delete_customer);
+app.get('/customers/edit/:id', customers.edit);
+app.post('/customers/edit/:id',customers.save_edit);
 
-app.get('/', index.index);
-app.get('/add', sample.add);
-app.get('/add', sample.add);
+//
 app.get('/surveys/testCon', surveys.testCon);
 app.get('/surveys/createTableStations', surveys.createTableStations);
 app.get('/surveys/list', surveys.list);
