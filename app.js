@@ -12,6 +12,7 @@ const path = require('path');
 const surveys = require('./survey/surveys'); 
 const login = require('./survey/login');
 const index = require('./survey/index');
+const sample = require('./routes/customers')
 const app = express();
 //const bodyParser = require('body-parser');
 
@@ -56,6 +57,8 @@ app.use(
 
 
 app.get('/', index.index);
+app.get('/add', sample.add);
+app.get('/add', sample.add);
 app.get('/surveys/testCon', surveys.testCon);
 app.get('/surveys/createTableStations', surveys.createTableStations);
 app.get('/surveys/list', surveys.list);
