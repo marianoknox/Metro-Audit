@@ -56,7 +56,7 @@ app.use(
 );
 
 //samples
-app.get('/', customers.list);
+//app.get('/', customers.list);
 app.get('/customers', customers.list);
 app.get('/customers/add', customers.add);
 app.post('/customers/add', customers.save);
@@ -64,19 +64,23 @@ app.get('/customers/delete/:id', customers.delete_customer);
 app.get('/customers/edit/:id', customers.edit);
 app.post('/customers/edit/:id',customers.save_edit);
 
-//
+//For Survey
+app.get('/surveys', surveys.list);
+app.get('/surveys/add', surveys.add);
 app.get('/surveys/testCon', surveys.testCon);
 app.get('/surveys/createTableStations', surveys.createTableStations);
-app.get('/surveys/list', surveys.list);
-app.put('/surveys/add', surveys.save);
-app.delete('/surveys/delete/:id', surveys.delete_survey);
-app.post('/surveys/edit/:id',surveys.save_edit);
+app.get('/surveys/edit/:id', surveys.edit);
+app.post('/surveys/save', surveys.save);
+app.get('/surveys/delete/:id', surveys.delete_survey);
+app.post('/surveys/save_edit/:id',surveys.save_edit);
 
 //For login
 app.get('/login/createTableUsers', login.createTableUsers);
-app.get('/login/validate_user', login.validate_user);
+app.post('/validate_user', login.validate_user);
 app.put('/login/add_user', login.add_user);
 app.get('/login/list', login.list);
+app.get('/login/delete/:id', login.delete_user);
+app.get('/', login.view);
 
 http.createServer(app).listen(app.get('port'), ()=>{
   console.log('Express server listening on port ' + app.get('port'));

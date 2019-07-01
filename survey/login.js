@@ -1,3 +1,7 @@
+exports.view = function(req, res){
+    res.render('login',{page_title:"Metro Survey - Login"});
+};
+
 exports.createTableUsers = (req, res)=>{
     let query = 'CREATE TABLE tbUsers (id int AUTO_INCREMENT, uname VARCHAR(255), upass VARCHAR (255), firstname VARCHAR (255), lastname VARCHAR (255), access VARCHAR (255), designation VARCHAR (255), PRIMARY KEY(id))'
 
@@ -17,27 +21,34 @@ exports.list = (req, res)=>{
     req.getConnection((err, connection)=>{
         if(err) throw err;
         connection.query(query, (err, result)=>{
-            if(err) throw err;
+            if(err) console.log("Error Selecting : %s ",err );
             console.table(result);
-            res.send(result);
+            res.render('users',{page_title:"Users ACIFM",data:result});
         });
     });
 };
 
 exports.validate_user = (req, res)=>{
-    let query = 'SELECT * FROM tbUsers WHERE uname = ? AND upass = ?'
-    let input = JSON.parse(JSON.stringify(req.body))
+    let query = 'SELECT * FROM tbUsers WHERE uname = ?'
+    let uname = req.body.uname;
+    let upass = req.body.upass;
 
     req.getConnection((err, connection)=>{
         if(err) console.log("Connection Error")
-        let data = {
-            uname : input.uname,
-            upass : input.upass
-        }
-        connection.query(query, [data.uname, data.upass], (err, rows)=>{ 
+        connection.query(query, [uname], (err, rows)=>{ 
             if(err) throw err;
-            res.send(rows);
-            console.table(rows);
+            if(rows.length > 0){
+                if(upass == rows[0].upass){
+                res.redirect('/surveys');
+                console.table(rows);
+                }  else {
+                    console.log("Nothing matches")
+                    res.redirect('/');
+                }
+            } else {
+                console.log("Nothing matches")
+                res.redirect('/');
+            }
         });       
     });
 };
@@ -63,5 +74,23 @@ exports.add_user = (req, res)=>{
         });
     });
 
+};
+
+exports.delete_user = (req,res)=>{
+        
+    let id = req.params.id;
+    let query = "DELETE FROM tbUsers WHERE id = ?"
+    req.getConnection((err, connection)=>{
+        
+        connection.query(query, [id], (err, rows)=>
+        {           
+            if(err)
+                 console.log("Error deleting : %s ",err );
+            
+            res.redirect('/surveys');
+            console.log("Row deleted");
+        });
+        
+    });
 };
 
