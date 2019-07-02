@@ -27,7 +27,7 @@
                     for(var i = 0;i < data.length;i++) { %>
                     
                 <tr>
-                    <td><%=data[i].id%></td>
+                    <td><a href=""><%=data[i].id%></a></td>
                     <td><%=data[i].line%></td>
                     <td><%=data[i].station%></td>
                     <td></td>
@@ -36,9 +36,9 @@
                     <td><%=data[i].remarks%></td>
                     <td><%=data[i].status%></td>
                     <td>
-                        <a class="btn btn-primary" href="../surveys/edit/<%=data[i].id%>">Edit</a>
+                        <a class="btn btn-outline-info btn-sm" href="../surveys/edit/<%=data[i].id%>">Edit</a>
                         
-                        <a class="btn btn-primary" href="../surveys/delete/<%=data[i].id%>">Delete</a>
+                        <a class="btn btn-outline-danger btn-sm" href="../surveys/delete/<%=data[i].id%>">Delete</a>
                         
                     </td>
                 </tr>
@@ -51,9 +51,7 @@
                 <% } %>
             </tbody>
         </table>
-        <div class="data-btn">
-            <button class="btn btn-primary" onClick="addSurvey();">+ Add</button>
-        </div>
+            <button class="btn btn-info" onClick="addSurvey();">+ Add</button>
     </div>
 </div>
         

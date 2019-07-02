@@ -34,9 +34,31 @@ exports.list = (req, res)=>{
     });
 };
 
-exports.add = function(req, res){
-    res.render('add_survey',{page_title:"Metro Survey - Add"});
+exports.add = (req, res)=>{
+    //Fill Parameters
+    let query = "SELECT station FROM tbStation"
+    req.getConnection((err, connection)=>{
+        if (err) throw err
+        connection.query(query, (err, rows)=>{
+            if (err) throw err
+
+            res.render('add_survey',{data:rows, page_title:"Metro Survey - Add",});
+        })
+    })
+
+    
 };
+
+function fillStation(req){
+    let query = "SELECT station FROM tbStation"
+    req.getConnection((err, connection)=>{
+        if (err) throw err
+        connection.query(query, (err, rows)=>{
+            if (err) throw err
+            return rows
+        })
+    })
+}
 
 exports.edit = (req, res)=>{   
     var id = req.params.id;   
@@ -65,6 +87,29 @@ let input = JSON.parse(JSON.stringify(req.body));
         result  : input.result,
         remarks : input.remarks,
         status  : input.status   
+    };        
+        connection.query(query, data, (err, rows)=>
+        {
+            if (err)
+              console.log("Error inserting : %s ",err );
+         
+            res.redirect('/surveys');
+            console.table(input);         
+        });      
+    });
+};
+
+exports.saveDetails = (req,res)=>{
+let query = 'INSERT INTO tbStationsResults SET ?'
+let input = JSON.parse(JSON.stringify(req.body));
+
+    req.getConnection((err, connection)=>{  
+
+    let data = {    
+        surveyNo: input.surveyNo,
+        quesNo  : input.questionNo,
+        grade   : input.grade,
+        remarks : input.remarks   
     };        
         connection.query(query, data, (err, rows)=>
         {
@@ -121,3 +166,5 @@ exports.delete_survey = (req,res)=>{
         
     });
 };
+
+

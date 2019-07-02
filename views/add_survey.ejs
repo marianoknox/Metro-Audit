@@ -5,10 +5,11 @@
             <div class="row">
                 <div class="col-sm-3">
                     <select class="form-control">
-                    <option value="">Red</option>
-                    <option value="">Green</option>
-                    <option value="">Gold</option>
-                    <option value="">Blue</option>
+                        <% if(data.length){ %>
+                            <% for(var i = 0; i < data.length; i++) { %>
+                                <option><%=data[i].station%></option>
+                            <% } %>
+                        <% } %>
                     </select>
                 </div>
             </div>
