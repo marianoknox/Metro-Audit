@@ -30,3 +30,15 @@ function deleteSurvey(id){
 function confirmedLogin(){
     window.location.href = '/surveys';
 }
+
+function lineChanged(){
+    var lineSelection = select.options[select.selectedIndex].value;
+
+    if(lineSelection = 'Red'){
+        console.log("Red")
+    } else if (lineSelection = 'Green') {
+        console.log("Green")
+    } else {
+        
+    }
+}

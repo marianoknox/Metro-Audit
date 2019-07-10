@@ -1,58 +1,77 @@
 <%- include layouts/header.ejs %>
 
-<div class="table100 ver1 m-b-110">
-    <div class="table100-head">
-        <table>
-            <thead>
-                <tr class="row100 head">
-                    <th class="cell100 column2">ID</th>
-                    <th class="cell100 column3">Line</th>
-                    <th class="cell100 column4">Station</th>
-                    <th class="cell100 column5">Section</th>
-                    <th class="cell100 column6">Name</th>
-                    <th class="cell100 column7">Result</th>
-                    <th class="cell100 column8">Remarks</th>
-                    <th class="cell100 column9">Status</th>
-                    <th class="cell100 column9">Action</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
 
-    <div class="table100-body js-pscroll">
-        <table>
-            <tbody>
-                <% if(data.length){ 
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Surveys</h4> </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <p class="text-muted">Add new <a href="../surveys/add"><code>Survey</code></a></p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Line</th>
+                                    <th>Station</th>
+                                    <th>Section</th>
+                                    <th>Name</th>
+                                    <th>Result</th>
+                                    <th>Remarks</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(data.length){ 
+                                                
+                                    for(var i = 0;i < data.length;i++) { %>
+                                    
+                                <tr>
+                                    <td><a href=""><%=data[i].id%></a></td>
+                                    <td></td>
+                                    <td><%=data[i].line%></td>
+                                    <td><%=data[i].station%></td>
+                                    <td></td>
+                                    <td><%=data[i].auditor%></td>
+                                    <td><%=data[i].result%></td>
+                                    <td><%=data[i].remarks%></td>
+                                    <td><%=data[i].status%></td>
+                                    <td>
+                                        <a class="btn btn-info" href="../surveys/edit/<%=data[i].id%>">Edit</a>
+                                        
+                                        <a class="btn btn-danger" href="../surveys/delete/<%=data[i].id%>">Delete</a>
+                                        
+                                    </td>
+                                </tr>
+                                <% }
                                 
-                    for(var i = 0;i < data.length;i++) { %>
-                    
-                <tr>
-                    <td><a href=""><%=data[i].id%></a></td>
-                    <td><%=data[i].line%></td>
-                    <td><%=data[i].station%></td>
-                    <td></td>
-                    <td><%=data[i].auditor%></td>
-                    <td><%=data[i].result%></td>
-                    <td><%=data[i].remarks%></td>
-                    <td><%=data[i].status%></td>
-                    <td>
-                        <a class="btn btn-outline-info btn-sm" href="../surveys/edit/<%=data[i].id%>">Edit</a>
-                        
-                        <a class="btn btn-outline-danger btn-sm" href="../surveys/delete/<%=data[i].id%>">Delete</a>
-                        
-                    </td>
-                </tr>
-                <% }
-                
-                    }else{ %>
-                        <tr>
-                        <td colspan="3">No survey</td>
-                        </tr>
-                <% } %>
-            </tbody>
-        </table>
-            <button class="btn btn-info" onClick="addSurvey();">+ Add</button>
+                                    }else{ %>
+                                        <tr>
+                                        <td colspan="3">No survey</td>
+                                        </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
 </div>
-        
+<!-- /#page-wrapper -->
+
 <%- include layouts/footer.ejs %>

@@ -1,49 +1,89 @@
 <%- include layouts/header.ejs %>
 
-        <div class="page-data">
 
-            <div class="row">
-                <div class="col-sm-3">
-                    <select class="form-control">
-                        <% if(data.length){ %>
-                            <% for(var i = 0; i < data.length; i++) { %>
-                                <option><%=data[i].station%></option>
-                            <% } %>
-                        <% } %>
-                    </select>
-                </div>
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">New Survey</h4> </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Logout</a>
             </div>
-            
-            <form method="post" action="/surveys/save">
-                <table cellpadding="11">
-                <tr>
-                    <td class="label">Line</td><td>: <input type="text" name="line" required></td>
-                 </tr>
-                 <tr>
-                    <td class="label">Station</td><td>: <input type="text" name="station" required></td>
-                </tr>
-                <tr>
-                    <td class="label">Name</td><td>: <input type="text" name="auditor" required></td>
-                </tr>
-                <tr>
-                    <td class="label">Result</td><td>: <input type="text" name="result" required></td>
-                </tr>
-                <tr>
-                    <td class="label" valign="top">Remarks</td><td valign="top">: <textarea name="remarks" required cols="30" rows="5"></textarea></td>
-                </tr>
-                <tr>
-                    <td class="label">Status</td><td>: <input type="text" name="status" required></td>
-                </tr>
-                <tr>
-                    <td class="label"></td>
-                    <td>
-                        &nbsp; <input type="submit" name="submit" value="Save">
-                       <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
-                    </td>
-                </tr>
-                </table>
-            </form>
-            
+            <!-- /.col-lg-12 -->
         </div>
-        
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-3">
+                <select class="form-control" id="lineSelection" onchange="lineChanged()" name="line">
+                    <% if(line.length){ %>
+                        <% for(var i = 0; i < line.length; i++) { %>
+                            <option><%=line[i]%></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-3">
+                <select class="form-control" name="station">
+                    <% if(data.length){ %>
+                        <% for(var i = 0; i < data.length; i++) { %>
+                            <option><%=data[i].station%></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-3">
+                <select class="form-control" name="section">
+                    <% if(section.length){ %>
+                        <% for(var i = 0; i < section.length; i++) { %>
+                            <option><%=section[i]%></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+
+        <form method="post" action="/surveys/save">
+            <table cellpadding="11">
+            <tr>
+                <td class="label">Line</td><td>: <input type="text" name="line" required></td>
+                </tr>
+                <tr>
+                <td class="label">Station</td><td>: <input type="text" name="station" required></td>
+            </tr>
+            <tr>
+                <td class="label">Name</td><td>: <input type="text" name="auditor" required></td>
+            </tr>
+            <tr>
+                <td class="label">Result</td><td>: <input type="text" name="result" required></td>
+            </tr>
+            <tr>
+                <td class="label" valign="top">Remarks</td><td valign="top">: <textarea name="remarks" required cols="30" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td class="label">Status</td><td>: <input type="text" name="status" required></td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp; <input type="submit" name="submit" value="Save">
+                    <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                </td>
+            </tr>
+            </table>
+        </form>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
+</div>
+<!-- /#page-wrapper -->
+
 <%- include layouts/footer.ejs %>
+

@@ -1,40 +1,54 @@
 <%- include layouts/header.ejs %>
 
-        <div class="page-data">
-            
-            <form method="post" action="/surveys/save_edit/<%=data[0].id%>">
-                <table cellpadding="11">
-                <tr>
-                    <td class="label">Line</td><td>: <input type="text" name="line" value="<%=data[0].line%>" required></td>
-                </tr>
-                <tr>
-                    <td class="label">Station</td><td>: <input type="text" name="station" value="<%=data[0].station%>" required></td>
-                </tr>
-                <tr>
-                    <td class="label">Name</td><td>: <input type="text" value="<%=data[0].auditor%>" name="auditor" required></td>
-                </tr>
-                <tr>
-                    <td class="label">Result</td><td>: <input type="text" name="result" value="<%=data[0].result%>" required></td>
-                </tr>
-                <tr>
-                    <td class="label" valign="top">Remarks</td>
-                    <td valign="top">: 
-                        <textarea name="remarks" required cols="30" rows="5"><%=data[0].remarks%></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Status</td><td>: <input type="text" value="<%=data[0].status%>" name="status" required></td>
-                </tr>
-                <tr>
-                    <td class="label"></td>
-                    <td>
-                        &nbsp; <input type="submit" name="submit" value="Save">
-                       <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
-                    </td>
-                </tr>
-                </table>
-            </form>
-            
+
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Edit Survey</h4> </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
-        
+        <!-- /row -->
+        <form method="post" action="/surveys/save_edit/<%=data[0].id%>">
+            <table cellpadding="11">
+            <tr>
+                <td class="label">Line</td><td>: <input type="text" name="line" value="<%=data[0].line%>" required></td>
+            </tr>
+            <tr>
+                <td class="label">Station</td><td>: <input type="text" name="station" value="<%=data[0].station%>" required></td>
+            </tr>
+            <tr>
+                <td class="label">Name</td><td>: <input type="text" value="<%=data[0].auditor%>" name="auditor" required></td>
+            </tr>
+            <tr>
+                <td class="label">Result</td><td>: <input type="text" name="result" value="<%=data[0].result%>" required></td>
+            </tr>
+            <tr>
+                <td class="label" valign="top">Remarks</td>
+                <td valign="top">: 
+                    <textarea name="remarks" required cols="30" rows="5"><%=data[0].remarks%></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Status</td><td>: <input type="text" value="<%=data[0].status%>" name="status" required></td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp; <input type="submit" name="submit" value="Save">
+                   <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                </td>
+            </tr>
+            </table>
+        </form>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
+</div>
+<!-- /#page-wrapper -->
+
 <%- include layouts/footer.ejs %>
