@@ -9,7 +9,8 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 //load route
-const surveys = require('./survey/surveys'); 
+const surveys = require('./survey/surveys');
+const faults = require('./survey/faults');
 const login = require('./survey/login');
 const index = require('./survey/index');
 const customers = require('./routes/customers')
@@ -81,6 +82,12 @@ app.put('/login/add_user', login.add_user);
 app.get('/login/list', login.list);
 app.get('/login/delete/:id', login.delete_user);
 app.get('/', login.view);
+
+//For Fault
+app.get('/faults', faults.list);
+app.get('/faults/add', faults.add);
+app.post('/faults/save', faults.save);
+app.post('/faults/save_api', faults.save_api);
 
 http.createServer(app).listen(app.get('port'), ()=>{
   console.log('Express server listening on port ' + app.get('port'));

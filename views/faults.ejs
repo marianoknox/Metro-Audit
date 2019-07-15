@@ -1,0 +1,75 @@
+<%- include layouts/header.ejs %>
+
+
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Faults</h4> </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <p class="text-muted">Add new <a href="../faults/add"><code>Survey</code></a></p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Line</th>
+                                    <th>Station</th>
+                                    <th>Section</th>
+                                    <th>Name</th>
+                                    <th>Fault Description</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(data.length){ 
+                                                
+                                    for(var i = 0;i < data.length;i++) { %>
+                                    
+                                <tr>
+                                    <td><a href=""><%=data[i].id%></a></td>
+                                    <td></td>
+                                    <td><%=data[i].line%></td>
+                                    <td><%=data[i].station%></td>
+                                    <td></td>
+                                    <td><%=data[i].empName%></td>
+                                    <td><%=data[i].faultDescription%></td>
+                                    <td><%=data[i].faultStatus%></td>
+                                    <td>
+                                        <a class="btn btn-info" href="../faults/edit/<%=data[i].id%>">Edit</a>
+                                        
+                                        <a class="btn btn-danger" href="../faults/delete/<%=data[i].id%>">Delete</a>
+                                        
+                                    </td>
+                                </tr>
+                                <% }
+                                
+                                    }else{ %>
+                                        <tr>
+                                        <td colspan="3">No survey</td>
+                                        </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
+</div>
+<!-- /#page-wrapper -->
+
+<%- include layouts/footer.ejs %>
