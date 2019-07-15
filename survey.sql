@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 -- Stable structure `stations`
 --
 
-CREATE TABLE IF NOT EXISTS `tbStation` (
+CREATE TABLE IF NOT EXISTS `tbStations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `line` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `tbStation` (
 -- Stable structure `survey`
 --
 
-CREATE TABLE IF NOT EXISTS `tbSurvey` (
+CREATE TABLE IF NOT EXISTS `tbSurveys` (
   `surveyNo` int(11) NOT NULL AUTO_INCREMENT,
   `surveyDate` DATETIME NOT NULL,
   `line` varchar(255) NOT NULL,
@@ -68,6 +68,23 @@ CREATE TABLE IF NOT EXISTS `tbUsers` (
   `access` varchar(255) NOT NULL,
   `uname` varchar(255) NOT NULL,
   `upass` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+
+--
+-- Stable structure `fault`
+--
+
+CREATE TABLE IF NOT EXISTS `tbFaults` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `line` varchar(255) NOT NULL,
+  `station` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `empNo` varchar(255) NOT NULL,
+  `empName` varchar(255) NOT NULL,
+  `faultDate` varchar(255) NOT NULL,
+  `faultDescription` varchar(255) NOT NULL,
+  `faultImage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 )
 

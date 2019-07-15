@@ -39,11 +39,11 @@ app.use(
     
     connection(mysql,{
         
-        host: 'localhost', //'localhost or IP',
-        user: 'root',
-        password : '',
+        host: 'us-cdbr-iron-east-02.cleardb.net', //'localhost or IP',
+        user: 'b83c06f62f60df',
+        password : '75ff4066',
         //port : 3306, //port mysql
-        database:'dbaudit'
+        database:'heroku_726e94efd6de4c5'
 
         // host: 'localhost', //'localhost or IP',
         // user: 'root',
