@@ -88,6 +88,7 @@ app.get('/faults', faults.list);
 app.get('/faults/add', faults.add);
 app.post('/faults/save', faults.save);
 app.post('/faults/save_api', faults.save_api);
+app.get('/faults/delete/:id', faults.delete_fault);
 
 http.createServer(app).listen(app.get('port'), ()=>{
   console.log('Express server listening on port ' + app.get('port'));

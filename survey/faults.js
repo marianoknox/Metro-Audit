@@ -84,4 +84,21 @@ exports.save_api = (req,res)=>{
     });
 };
 
+exports.delete_fault = (req,res)=>{
+        
+    let id = req.params.id;
+    let query = "DELETE FROM tbFaults WHERE id = ?"
+    req.getConnection((err, connection)=>{
+        
+        connection.query(query, [id], (err, rows)=>
+        {           
+            if(err)
+                 console.log("Error deleting : %s ",err );
+            
+             res.redirect('/faults');
+            console.log("Row deleted");
+        });
+        
+    });
+};
 
