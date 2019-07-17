@@ -1,5 +1,5 @@
 exports.list = (req, res)=>{
-    let query = 'SELECT * FROM tbFaults ORDER BY id ASC';
+    let query = 'SELECT * FROM tbFaults ORDER BY id DESC';
 
     req.getConnection((err,connection)=>{
         connection.query(query,(err,rows)=>

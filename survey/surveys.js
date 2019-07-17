@@ -18,7 +18,7 @@ exports.createTableStations = (req, res)=>{
 };
 
 exports.list = (req, res)=>{
-    let query = 'SELECT * FROM tbStationsResults ORDER BY id ASC';
+    let query = 'SELECT * FROM tbStationsResults ORDER BY id DESC';
 
     req.getConnection((err,connection)=>{
         connection.query(query,(err,rows)=>
