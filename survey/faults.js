@@ -26,7 +26,7 @@ exports.add = (req, res)=>{
         connection.query(query, (err, rows)=>{
             if (err) throw err
 
-            res.render('add_survey',{data:rows, line, section,  page_title:"Metro Survey - Add",});
+            res.render('add_fault',{data:rows, line, section,  page_title:"Metro Survey - Add",});
         })
     })
 };
@@ -100,5 +100,34 @@ exports.delete_fault = (req,res)=>{
         });
         
     });
+};
+
+exports.add = (req, res)=>{
+    //Fill Parameters
+    const line = ['Red', 'Green', 'Gold', 'Blue']
+    const section = ['Entrance', 'Subway or Overbridge', 'Concourse', 'Public Facilities', 'Elevators and Escalators', 'Platform']
+
+    let query = "SELECT station, line FROM tbStation"
+    req.getConnection((err, connection)=>{
+        if (err) throw err
+        connection.query(query, (err, rows)=>{
+            if (err) throw err
+
+            res.render('add_fault',{data:rows, line, section,  page_title:"Metro Survey - Add",});
+        })
+    })
+};
+
+exports.edit = (req, res)=>{   
+    var id = req.params.id;   
+    req.getConnection((err,connection)=>{ 
+        connection.query('SELECT * FROM tbFaults WHERE id = ?',[id],(err,rows)=>
+        {           
+            if(err)
+                console.log("Error Selecting : %s ",err );
+     
+            res.render('edit_survey',{page_title:"Metro Survey - Edit",data:rows});           
+        });      
+    }); 
 };
 
